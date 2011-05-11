@@ -10,8 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Example:
     # (r'^venmoapp/', include('venmoapp.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
+ # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'media/(?P<path>.*)$', 'django.views.static.serve', {'document_root':settings.MEDIA_ROOT}),
 	(r'^cars/json', 'cars.views.cars'),
