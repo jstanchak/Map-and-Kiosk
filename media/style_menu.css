@@ -1,0 +1,357 @@
+@charset "utf-8";
+@import url('style-reset.css');
+
+/*-----------------------------------------------*/
+/*--------------- SITE STRUCTURE ---------------*/
+/*---------------------------------------------*/
+
+body {font-size: 100%; font-family: Arial, Helvetica, sans-serif; background: url(images/top.jpg) repeat-x}
+
+#container {margin: auto; width: 960px; font-size: .875em}
+
+#header {height: 111px;}
+
+#logo {width: 240px; height: 105px; float:left;}
+
+#login p {
+	padding: 0.2em 1em;
+	color: #666;
+    text-decoration: none;
+    float: right;
+	letter-spacing: .14em;}
+	
+#login a {
+		color: #666;
+	    text-decoration: none;
+		letter-spacing: .14em;}
+
+#screen {height: 410px; background: url(images/screen.jpg) no-repeat; margin: 10px 0; padding: 30px 0 0}
+
+#left {float: left; width: 300px}
+
+#right {float: right; width: 300px;}
+
+#middle {margin-left: 330px; margin-right: 330px;}
+
+#left, #right, #middle {margin-bottom: 40px}
+
+#footer {clear:both; width: 900px; margin: auto; font-size: .8em; padding: 30px; background: #373737 url(images/dark_gradient.jpg) repeat-x;
+    -moz-border-radius-topleft: 8px;
+	-khtml-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+    -moz-border-radius-topright: 8px;
+	-khtml-border-radius-topright: 8px;
+	-webkit-border-top-right-radius: 8px;
+}
+
+/* pages */
+
+#page_wrap {width: 960px; margin: auto}
+
+#page_top {height: 54px; background: url(images/page_top.jpg) no-repeat}
+
+#page {background: url(images/page_tile.jpg) repeat-y; padding: 0 54px;}
+
+#page_bottom {height: 54px; background: url(images/page_bottom.jpg) no-repeat; margin-bottom: 40px}
+
+/* contact info */
+
+#contact_info {float: left; width: 450px; margin-top: 15px}
+
+#contact_info ul {margin: 20px}
+
+/*#contact_info ul li {background: url(images/arrow.gif) no-repeat center left; padding-left: 15px; font-size: .9em; line-height: 1.8em}
+*/
+
+/*-----------------------------------------------*/
+/*---------------      Menu    --------------*/
+/*---------------------------------------------*/
+
+
+ul.menuItems {
+	float:left;
+	clear:both;
+	margin-bottom:15px;}
+ul.menuItems li{
+	float:left;
+	width:258px;
+	margin-right:15px;
+	padding:7px 15px 5px 15px;
+	margin-bottom:1px;
+	-moz-border-radius:15px;
+	border-radius:15px;
+	-webkit-border-radius:15px;
+	clear:left;}
+ul.menuItems li SPAN,SPAN.check-item-details A.item_name{font-family:Helvetica,Verdana,sans-serif!important;text-decoration:none;font-size:11pt!important;color:#574027!important;}
+SPAN.check-item-details A.item_name:hover{text-decoration:underline;}
+UL.menuItems li.odd{background:url(/img/roughPaperTexture.png) pink;}
+#UL.menuItems li.blackedOut span{color:#999!important;}UL.menuItems LI.blackedOut.oddRow:hover{background-image:url(/img/roughPaperTexture.png)!important;background-color:#fffbf3!important;box-shadow:0 0 0 white;}
+#UL.menuItems LI.blackedOut:hover{background-image:none!important;background-color:#fff!important;box-shadow:0 0 0 white;}
+.item_name{float:left;}
+.item_price{float:right;}
+
+.tooltip {
+	display:none;
+	background:transparent url(/media/tools/black_arrow.png);
+	font-size: 12px;
+	height:70px;
+	width:160px;
+	padding:25px;
+	color:#fff;
+}
+
+/*-----------------------------------------------*/
+/*-------   TYPOGRAPHY, IMG and LISTS   --------*/
+/*---------------------------------------------*/
+
+p {padding: 15px 0; line-height: 1.6em; font-size: .9em; color: #666}
+
+p.frontpage_text {text-align:justify}
+
+
+
+h2 {clear: both; padding: 15px 0 0}
+
+h3.frontpage_heading, h1.pagetitle {background: #373737 url(images/dark_gradient.jpg) repeat-x; padding:30px 10px 5px; text-align: right; font-size: 1.8em; font-weight: normal; letter-spacing: .25em; color: #fff; margin-bottom: 15px;
+    -moz-border-radius-topleft: 8px;
+	-khtml-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+	
+    -moz-border-radius-bottomright: 8px;
+	-khtml-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+}
+
+#footer a, #footer p {color: #666}
+
+#footer_right h5 {font-size: .9em; font-weight:700; padding-top: 20px; padding-right: 25px; text-align: right; color: #999}
+
+.float_left { float: left; margin-right: 12px; padding: 8px; background: #F7F7F7; border: 1px solid #CCC;
+    -moz-border-radius-topleft: 8px;
+	-khtml-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+	
+    -moz-border-radius-bottomright: 8px;
+	-khtml-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+}
+
+/**************************** Gallery *****************************/
+
+#gallery {
+	width: 852px;
+	margin: auto;
+	overflow: auto;
+	padding-bottom: 18px;
+	position:static;
+}
+
+.float_left_thumb {
+	float: left;
+	height: 164px;
+	width: 152px;
+	margin: 8px 10px 2px 8px;
+	background: url(images/gallery_thumb.png) no-repeat;
+	padding-top: 6px;
+	text-align: center;
+}
+
+.center {margin: auto;}
+
+#no_gallery_found {width: 798; padding: 50px; margin: auto; background: red; border: 10px solid white}
+
+
+/*-----------------------------------------------*/
+/*---------------   NAVIGATION   ---------------*/
+/*---------------------------------------------*/
+
+/* gallery menu ---------------*/
+
+#g_navcontainer {
+     clear: both;
+	 margin-bottom: 40px;
+	 width: 100%;
+	 background: #373737 url(images/dark_gradient.jpg) repeat-x;
+	-moz-border-radius-topleft: 8px;
+	-khtml-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+	
+    -moz-border-radius-bottomright: 8px;
+	-khtml-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+}
+
+#g_navcontainer ul {
+     color: White;
+     width: 100%;
+	 padding: 24px
+}
+
+#g_navcontainer ul li {display: inline}
+
+#g_navcontainer ul li a {
+     padding: 0.2em 1em;
+     color: #CCC;
+     text-decoration: none;
+	 letter-spacing: .14em
+}
+
+#g_navcontainer ul li a:hover {
+     background: #eaeaea;
+     color: #000;
+	-moz-border-radius-topleft: 8px;
+	-khtml-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+	
+    -moz-border-radius-bottomright: 8px;
+	-khtml-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+}
+
+/* horizontal menu ---------------*/
+
+#h_navcontainer {
+     width: 100%;
+	 height: 60px
+}
+
+#h_navcontainer ul {
+     color: White;
+     width: 100%;
+}
+
+#h_navcontainer ul li {display: inline;}
+
+#h_navcontainer ul li a {
+     padding: 0.2em 1em;
+     color: #666;
+     text-decoration: none;
+     float: right;
+	 letter-spacing: .14em
+}
+
+#h_navcontainer ul li a:hover {
+     background: #eaeaea;
+     color: #000;
+}
+
+/* footer menu ---------------*/
+
+#footer h4 {font-weight: bold; margin-bottom: 8px; padding: 5px; background: #1D1D1D; color:#999;
+    -moz-border-radius-topleft: 5px;
+	-khtml-border-radius-topleft: 5px;
+	-webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+	-khtml-border-radius-topright: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-khtml-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-khtml-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+}
+
+#footer_left {float: left; width: 540px; border: 0px solid red}
+
+#footer_left ul {float: left; margin-right: 60px; width: 120px}
+
+#footer_left li {background: url(images/seperator_footer.png) repeat-x bottom; padding: 5px 0}
+
+#footer_left ul li a {color: #999; text-decoration: none;}
+
+#footer_right {width: 350px; float: right;}
+
+#footer_right ul li {display: inline; margin-right: 15px;}
+
+#footer_right img {border: 8px solid #eee;
+    -moz-border-radius-topleft: 5px;
+	-khtml-border-radius-topleft: 5px;
+	-webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+	-khtml-border-radius-topright: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-khtml-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-khtml-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+}
+
+/*-----------------------------------------------*/
+/*---------------      FORMS     ---------------*/
+/*---------------------------------------------*/
+
+#form_container {border: 1px solid #CCC; width: 340px; margin-top: 30px; padding: 20px 20px 20px; background: #fafafa; float: right; margin-left: 20px;
+    -moz-border-radius-topleft: 8px;
+	-khtml-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+    -moz-border-radius-topright: 8px;
+	-khtml-border-radius-topright: 8px;
+	-webkit-border-top-right-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-khtml-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	-moz-border-radius-bottomleft: 8px;
+	-khtml-border-radius-bottomleft: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+}
+
+
+/*-----------------------------------------------*/
+/*---------------      Slider     --------------*/
+/*---------------------------------------------*/
+
+	#slideshow{
+	background-color: #202020;
+	width: 890px;
+	height: 283px; 
+	margin: 5px 0px 0px 36px;
+	float: left;
+	}
+	
+	#slideshow-threed{
+	width: 920px;
+	height: 283px; 
+	margin: 15px 0px 0px 0px;
+	float: left;
+	}
+	
+	#box-nav-slider{
+	width:935px;
+	height:17px;
+	float:left;
+	}
+	
+	#slideshow-navigation a{
+	background: url(images/slide.png) no-repeat scroll 50% 50%;
+	display: block;
+	float: left;
+	font-size: 0px;
+	width: 9px;
+	height: 9px;
+	margin: 10px 0 0;
+	outline-style: none;
+	outline-width: medium;
+	padding: 2px;
+	}
+	
+	#slideshow-navigation{float:right; padding-right:10px}
+	#slideshow-navigation .activeSlide {background: url(images/slide.png) no-repeat scroll 0% 50%;}
+	.slidehalf { margin-top:0px; margin-right:20px; float:left;} /* Editable Slider Image Position */
+	.slidehalf2 { margin-top:0px; margin-right:0px; float:left;} /* Editable Slider Image Position */
+	.slide-text h1{color:#FFF; padding:50px 20px 0px 0px}
+	.slide-text p{font-size:12px; color:#b5b5b5; line-height:22px; padding-right:20px; text-align: justify}
+	.flash-img {text-align:center; display:block; margin:100px auto 0 auto;}
+	
+	a.read_more{color:#ff4e00; font-size:12px; float: right; margin-right: 20px}
+	
+
+
+
+
+
+
+
+
