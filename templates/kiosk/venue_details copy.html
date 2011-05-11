@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ venue.venue_name }}
+{% endblock %}
+
+{% block contents %}
+<div id="page_wrap">
+	<div id="page_top"></div>
+	<div id="page">
+		<h1 class="pagetitle">{{ venue.venue_name }}</h1>
+		{% load thumbnail %}
+		<img src="{{ venue.image|thumbnail:"300x300"}}" />
+
+		<h2><a href="{% url kiosk.views.edit venue.slug %}">Edit Venue Info</a></h2>
+
+
+
+		{% for item in items %}
+		<h2>{{item.item_name}} - ${{item.price}}</a></h2>
+		<p><img src="{{item.image|thumbnail:"100x100"}}" class="float_left" alt="Demo" />{{item.description }}</p>
+		{% endfor %}
+		
+		<h2><a href="{% url kiosk.views.edit_items venue.slug %}">Edit Items</a></h2>
+		<h2><a href="{% url kiosk.views.add_items venue.slug %}">Add New Items</a></h2>
+		<h2><a href="{% url kiosk.views.menu venue.slug %}">Public menu</a></h2>
+		
+		
+	</div><!--close page-->
+	<div id="page_bottom"></div>
+</div><!--close page_wrap-->
+
+{% endblock %}

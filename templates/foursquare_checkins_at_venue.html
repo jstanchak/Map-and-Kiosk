@@ -1,0 +1,24 @@
+coming soon
+{{foursquare_checkins_at_venue.response.hereNow.items }}
+<h2>Early tech adopters at your place, Charge 'em UP</h2>
+{% for i in foursquare_checkins_at_venue.response.hereNow.items %}
+	<div style="padding:5px;border-bottom:1px solid #ccc;background:#e9e9e9;border-top:1px solid #fff;">
+			<table>
+				<tr>
+					<td>
+
+						<img src="{{i.user.photo}}">
+					</td>
+					<td>
+						<div>{{i.firstName}} {{i.lastName}}</div>
+						{{i.shout}}
+					</td>
+					<td>
+						CHARGE THIS PERSON FOR COFFEE
+					</td>
+				</tr>
+			</table>
+		
+	</div>
+
+{% endfor %}

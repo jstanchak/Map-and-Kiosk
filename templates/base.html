@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<title>
+		{% block title %}Page title{% endblock %}
+		</title>
+		<link rel="stylesheet" type="text/css" media="all" href="/media/style.css" />
+		<script src="/media/jquery-1.4.4.min.js"></script>
+		{% block js_code %}
+		{% endblock %}
+	</head>
+	
+<body>
+	<div id="container">
+		<div id="header">
+			<div id="logo"><a href="/"><img src="/media/images/logo.png" width="240" height="105" alt="home" /></a></div>
+			<div id="login">
+				{% if user.is_authenticated %}
+					<p>Welcome, {{ user.username }}</a> / <a href="/accounts/logout">Logout</a></p></div>
+				{% else %}
+					<p><a href="/accounts/signup">Signup</a> / <a href="/accounts/login">Login</a></p></div>
+				{% endif %}
+		</div><!-- ends header -->
+		
+		<div id="h_navcontainer">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/kiosk/">My venues</a></li>
+				<li><a href="/kiosk/create/">Create a venue</a></li>
+				<li><a href="">Contact</a></li>
+				<li><a href="">About</a></li>
+			<ul>
+		</div><!-- close h_navcontainer -->		
+		{% block contents %}
+		
+		This is some content.
+		
+		{% endblock %}
+	</div><!--close container -->
+	<div id="footer">
+		<div id="footer_left">
+			<ul>
+				<li class="footer_heading"><h4>General</h4></li>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about_us.html">About Us</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="contact_us.html">Contact Us</a></li>
+			</ul>
+
+			<ul>
+				<li class="footer_heading"><h4>Services</h4></li>
+				<li><a href="#">Photography</a></li>
+				<li><a href="#">Print</a></li>
+				<li><a href="#">Design</a></li>
+				<li><a href="#">Retouch</a></li>
+			</ul>
+
+			<ul>
+				<li class="footer_heading"><h4>Upcoming</h4></li>
+				<li><a href="#">New Offers</a></li>
+				<li><a href="#">Free Stock Photos</a></li>
+				<li><a href="#">Studio Lightning</a></li>
+				<li class="last"><a href="#">New from Canon</a></li>
+			</ul>
+	 	</div>
+		<div id="footer_right">
+			<ul>
+		   		<li><img src="images/footer_thumb1.jpg" width="80" height="80" alt="demo" /></li>
+		   		<li><img src="images/footer_thumb2.jpg" width="80" height="80" alt="demo" /></li>
+		   		<li style="margin-right:0"><img src="images/footer_thumb3.jpg" width="80" height="80" alt="demo" /></li>
+		 	</ul>
+		 	<h5><a href="#" title="gallery">Go To Gallery &raquo;</a></h5>
+		</div>
+
+
+		<p style="clear:both; text-align: center; padding-top:40px">Company Name inc &bull; Gata 3a, 5015 Bergen NORWAY &bull; Tel. 99 99 99 99 <br />Template by: <a href="http://www.csstemplateheaven.com" title="CssTemplateHeaven">CssTemplateHeaven</a> &bull; Photos &copy; <a href="http://www.dieter.no">Dieter Schneider</a></p>
+
+	</div><!-- close footer-->
+	
+</body>
+</html>

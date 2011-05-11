@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add new venue
+{% endblock %}
+
+{% block contents %}
+<div id="page_wrap">
+	<div id="page_top"></div>
+	<div id="page">
+		<h1 class="pagetitle">Add new venue</h1>
+		
+		{{imgdict}}
+		
+		<div id="form_container">
+			
+			<form enctype="multipart/form-data" action="." method="post">{% csrf_token %}
+				{{venueform.as_p}}
+
+				{% for form in itemforms %}
+					{{form.non_field_errors}}
+						{{ form.item_name.errors }}
+						<div class="rowElem"><p><label for="id_item_name">Item:</label>
+						{{ form.item_name }}</p></div>
+						{{ form.description.errors }}
+						<div class="rowElem"><p><label for="id_item_name">Description:</label>
+						{{ form.description }}</p></div>
+						{{ form.price.errors }}
+						<div class="rowElem"><p><label for="id_price">Price:</label>
+						{{ form.price }}</p></div>
+						{{ form.image.errors }}
+						<div class="rowElem"><p><label for="id_price">Image:</label>
+						{{ form.image }}</p></div>
+						<br>
+				{% endfor %}
+
+				<div class="rowElem"><input type="submit" name="create_venue" value="Create Venue" /></div>
+			</form>
+
+		</div><!--close form container-->
+		<div style="clear:both"></div>	
+	</div><!--close page-->
+	<div id="page_bottom"></div>
+</div><!--close page_wrap-->
+
+{% endblock %}

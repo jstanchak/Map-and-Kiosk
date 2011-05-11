@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block contents %}
+<div id="page_wrap">
+	<div id="page_top"></div>
+	<div id="page">
+		<h1 class="pagetitle">Login</h1>
+
+		{% if form.errors %}
+		<p>Sorry, that's not a valid username or password</p>
+		{% endif %}
+
+		<div id="form_container">
+			<form action="" method="post">{% csrf_token %}
+				<label for="username">User name:</label>
+				<input type="text" name="username" value="" id="username">
+				<label for="password">Password:</label>
+				<input type="password" name="password" value="" id="password">
+
+				<input type="submit" value="Login" />
+				<input type="hidden" name="next" value="/kiosk/" />
+			</form>
+		</div><!--close form_container-->
+		<div style="clear:both"></div>
+	</div><!--close page-->
+	<div id="page_bottom"></div>
+</div><!--close page_wrap-->
+
+{% endblock %}

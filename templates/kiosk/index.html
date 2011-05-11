@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Kiosk - a venmo app
+{% endblock %}
+
+
+{% block contents %}
+<div id="page_wrap">
+	<div id="page_top"></div>
+	<div id="page">
+		<h1 class="pagetitle">My Venues</h1>
+
+		<h2><a href="{% url kiosk.views.create %}">Create new venue</a></h2>
+
+
+
+		{% for venue in venues %}
+		<h2><a href="{{venue.get_absolute_url}}">{{venue.venue_name}}</a></h2>
+		<p><img src="{{venue.image}}" class="float_left" alt="Demo" />By {{venue.author}}</p>
+		{% endfor %}
+		
+	</div><!--close page-->
+	<div id="page_bottom"></div>
+</div><!--close page_wrap-->
+
+	
+{% endblock %}

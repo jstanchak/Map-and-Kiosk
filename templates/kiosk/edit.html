@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit {{ venue.venue_name }}
+{% endblock %}
+
+{% block contents %}
+<div id="page_wrap">
+	<div id="page_top"></div>
+	<div id="page">
+		<h1 class="pagetitle">Edit {{ venue.venue_name }}</h1>
+
+		<div id="form_container">
+	
+			<form action="." method="post">{% csrf_token %}
+				{{venueform.as_p}}
+		
+				<input type="submit" name="create_user" value="Edit User" />
+			</form>
+		</div><!--close form_container -->
+		<div style="clear:both"></div>
+	</div><!--close page-->
+	<div id="page_bottom"></div>
+</div><!--close page_wrap-->
+{% endblock %}

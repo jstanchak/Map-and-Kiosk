@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>
+		{% block title %}Page title{% endblock %}
+		</title>
+		<link rel="stylesheet" type="text/css" media="all" href="/media/style.css" />
+		<link type="text/css" href="/media/css/smoothness/jquery-ui-1.8.10.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="/media/jquery-1.4.4.min.js"></script>
+		{% block js_code %}
+		{% endblock %}
+	</head>
+	
+<body>
+	<div id="container">
+		<div id="header">
+			<div id="logo"><a href="/"><img src="/media/images/logo.png" width="240" height="105" alt="home" /></a></div>
+			<div id="login">
+				{% if user.is_authenticated %}
+					<p>Welcome, {{ user.username }}</a> / <a href="/accounts/logout">Logout</a></p></div>
+				{% else %}
+					<p><a href="/accounts/signup">Signup</a> / <a href="/accounts/login">Login</a></p></div>
+				{% endif %}
+		</div><!-- ends header -->
+		
+		<div id="h_navcontainer">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/kiosk/">My venues</a></li>
+				<li><a href="/kiosk/create/">Create a venue</a></li>
+				<li><a href="">Contact</a></li>
+				<li><a href="">About</a></li>
+			<ul>
+		</div><!-- close h_navcontainer -->		
+		{% block contents %}
+		
+		This is some content.
+		
+		{% endblock %}
+	</div><!--close container -->
+	<div id="footer">
+
+
+		<p style="clear:both; text-align: center; padding-top:40px">Company Name inc &bull; Gata 3a, 5015 Bergen NORWAY &bull; Tel. 99 99 99 99 <br />Template by: <a href="http://www.csstemplateheaven.com" title="CssTemplateHeaven">CssTemplateHeaven</a> &bull; Photos &copy; <a href="http://www.dieter.no">Dieter Schneider</a></p>
+
+	</div><!-- close footer-->
+	
+</body>
+</html>

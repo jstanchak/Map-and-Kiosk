@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit {{ venue.venue_name }} items
+{% endblock %}
+
+{% block contents %}
+<div id="page_wrap">
+	<div id="page_top"></div>
+	<div id="page">
+		<h1 class="pagetitle">Edit {{ venue.venue_name }} Items</h1>
+
+		<div id="form_container">
+			
+			<form action="." method="post">{% csrf_token %}
+				{% for form in itemforms %}
+					{{form.non_field_errors}}
+						{{ form.item_name.errors }}
+						<label for="id_item_name">Item:</label>
+						{{ form.item_name }}
+						{{ form.description.errors }}
+						<label for="id_description">Description:</label>
+						{{ form.description }}
+						{{ form.price.errors }}
+						<label for="id_price">Price:</label>
+						{{ form.price }}
+						<br>
+				{% endfor %}
+				<input type="submit" name="create_user" value="Edit Items" />
+			</form>
+		</div><!--close form_container -->
+		<div style="clear:both"></div>
+	</div><!--close page-->
+	<div id="page_bottom"></div>
+</div><!--close page_wrap-->
+
+
+{% endblock %}

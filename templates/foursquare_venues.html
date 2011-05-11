@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<head>
+	<title>G-Squared Map</title>
+	<link href="/media/map/templatemo_style.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
+<script src="/media/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=geometry&sensor=false"></script>
+<script src="http://code.jquery.com/jquery-1.5.js"></script>
+<script>
+	var geocoder;
+	var map;
+	var myLatlng = new google.maps.LatLng(39.942245, -75.15716040000001);
+	var marker; 
+	
+	function setMarker(latlng) {	
+		marker = new google.maps.Marker( {
+			map: map,
+			position: latlng,
+			draggable: true
+		});
+		
+		google.maps.event.addListener(marker, 'dragend', function(event) {
+		    moveMarker(event.latLng);
+		});
+	}
+	
+	function initialize () {
+		geocoder = new google.maps.Geocoder();
+		var myOptions = {
+			zoom: 14,
+			center: myLatlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		setMarker(myLatlng);
+		document.getElementById('ll_map').innerHTML = myLatlng;
+		var lat = map.getCenter().toString()
+		foursquare(myLatlng, lat)
+	}
+	
+	function moveMarker(latlng) {
+		map.setCenter(latlng);
+		document.getElementById('ll_map').innerHTML = latlng;
+		var lat = map.getCenter().toString();
+		foursquare(myLatlng, lat);
+	}
+	
+  function codeAddress() {
+    var address = document.getElementById("address").value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        setMarker(results[0].geometry.location);
+		document.getElementById('ll_map').innerHTML = (results[0].geometry.location);
+		var lat = map.getCenter().toString();
+		foursquare(myLatlng, lat);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+	
+	function hereNow(venue_id) {
+		$.getJSON('https://api.foursquare.com/v2/venues/'+venue_id+'/herenow?', {"oauth_token":"VRRXHCCBZAKR0XXBB11BZJSA1K2TVBM5FIAEXWDRFKGJT44I"}, 
+			function(data) {
+				var elName = 'fsq_'+venue_id;
+				document.getElementById(elName).innerHTML = '';
+				$.each(data.response.hereNow.items, function() {
+					$('#'+elName).append('<img src='+this.user.photo+' />');
+				});
+			});
+	}	
+	
+	function foursquare(latlng, lat) {
+		var lstring = lat.replace('(','');
+		var l_string = lstring.replace(')','');
+
+		$.getJSON('https://api.foursquare.com/v2/venues/search?', {"oauth_token": "VRRXHCCBZAKR0XXBB11BZJSA1K2TVBM5FIAEXWDRFKGJT44I",
+        "ll": l_string, 
+		"limit": 10}, 
+			function(data) {
+				document.getElementById('fsq_results1').innerHTML = '';
+				$.each(data.response.groups, function() {
+					$("#fsq_results1").append('<h3>'+this.name+'</h3>');
+					$.each(this.items, function(){
+						$("#fsq_results1").append('<h5>'+this.name+'</h5><p>'+this.hereNow.count+' people here: </p>');
+						hereNow(this.id);
+						var elName = 'fsq_'+this.id
+						$("<p>").attr("id",elName).appendTo("#fsq_results1");
+					});
+				});
+			});
+	}
+	
+	function updateAddress() {
+		codeAddress();
+	}
+</script>
+</head>
+<body onload="initialize()">
+<div id='outer_wrapper'>
+	<div id='wrapper'>
+		<div id='header'>
+			<div id='site_title'>
+				<a href="jennykiosk.com">Jenny's Idea Room</a>
+			</div><!--end of site_title-->
+			<div id='menu'>
+				<ul>
+					<li><a href="index.html" class="current">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                </ul>    	
+            </div> <!-- end of menu -->
+			<div class="cleanter"></div>
+		</div><!--end of header-->
+		<div id='main'>
+			<div id='featured_box'>
+				<div id="map_canvas"></div>
+			</div><!--end of featured_box-->
+		</div><!--end of main-->
+		<div id='content'>
+			<div class='content_box cb_last'>
+				<div class='col_w300 col_first'>
+					<h2>Enter in an address</h2>
+					<p align='justify'><em>Enter your address below to see magic happen in the map above.</em></p>
+					<div>
+						<input id="address" type='text' size=52 name='address' value='Please enter in your address'/>
+						<input type='submit' value='Update Address' onclick="updateAddress()" />
+					</div><br />
+					<p align='justify'><strong>The map is currently centered at: <span id='ll_map'></span>.</strong></p>
+					<p align='justify'>Once you enter an address, you can find out who is checked in where around the location.</p>
+					<p align='justify'>Here is another paragraph that talks about some important stuff that you might want to know.</p>
+				</div><!--end col_w300 col_first-->
+				<div class='col_w640 col_last'>
+					<h2 id='nerds'>Foursquare Results</h2>
+					<div id='fsq_results1'></div>
+				</div><!--end col_w640 col_last-->
+				<div class="cleaner"></div>
+			</div><!--end of content_box cb_last-->
+		</div><!--end of content-->
+		<div id='footer'>
+			<a href=# class="current">Home</a> | <a href=#>About Us</a> | <a href=#>Services</a> | <a href=#>Gallery</a> | <a href=#>Contact Us</a><br /><br />
+    
+        	Copyright © 2011 <a href="#">Jenny Stanchak</a> | <a href="http://www.iwebsitetemplate.com" target="_parent">Website Templates</a> by <a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a>
+            
+	    </div><!--end of footer-->
+
+	</div><!--end of wrapper-->
+</div><!--end of outer wrapper-->
+</body>
