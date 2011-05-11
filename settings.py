@@ -95,7 +95,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'kiosk',
     'cart',
-    'cars',
     'map',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
